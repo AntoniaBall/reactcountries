@@ -5,10 +5,13 @@ const Navigation = () => {
     return (
         <div className="navigation">
             {/* Equivalent à Ancre <a> dans navigation, pour aller de page en page */}
-            <NavLink exact to="/">
+            <NavLink exact to="/"
+                    activeClassName="nav-active">
                 Accueil
             </NavLink>
-            <NavLink exact to="/about">
+            <NavLink exact to="/about"
+                    activeClassName="nav-active">
+                About
             </NavLink>
         </div>
     );
