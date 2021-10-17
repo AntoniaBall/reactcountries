@@ -1,17 +1,23 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Countries = () => {
     // hooks
     const [data,setData] = useState([]);
+
+    useEffect(() => {
+        axios.get(
+            "https://restcountries.com/v3.1/all?fields=name,capital,region,population"
+        ).then((res) => setData(res.data));
+
+        console.log(data)
+    },[])
     
-    axios.get('https://restcountries.com/v3.1/all?fields=name,capital,region,population').then((res) => console.log(res.data));
-
-
     return (
-        <div>
-            <h3>Countries</h3>
-            <p>{data}</p>
+        <div className="countries">
+            {data.map((country) => (
+                <li>{country.name.common}</li>
+            ))}
         </div>
     );
 };
